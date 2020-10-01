@@ -22,6 +22,7 @@ class UserController {
     }
 
     static async login(req, res) {
+        console.log("Login");
         let input = {
             username: req.body.username,
             password: req.body.password
@@ -50,6 +51,7 @@ class UserController {
                 })
             }
         } catch(err) {
+            console.log(err);
             res.status(500).json(err)
         }
     }
