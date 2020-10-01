@@ -15,18 +15,6 @@
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #f4623a;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -40,6 +28,7 @@
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
   }
+
   
   
   .card-signin {
@@ -86,62 +75,8 @@
     padding: var(--input-padding-y) var(--input-padding-x);
   }
   
-  .form-label-group>label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    margin-bottom: 0;
-    /* Override default `<label>` margin */
-    line-height: 1.5;
-    color: #495057;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    transition: all .1s ease-in-out;
-  }
+
   
-  .form-label-group input::-webkit-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input:-ms-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::-ms-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::-moz-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input:not(:placeholder-shown) {
-    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-    padding-bottom: calc(var(--input-padding-y) / 3);
-  }
-  
-  .form-label-group input:not(:placeholder-shown)~label {
-    padding-top: calc(var(--input-padding-y) / 3);
-    padding-bottom: calc(var(--input-padding-y) / 3);
-    font-size: 12px;
-    color: #777;
-  }
-  
-  .btn-google {
-    color: white;
-    background-color: #ea4335;
-  }
-  
-  .btn-facebook {
-    color: white;
-    background-color: #3b5998;
-  }
   
   /* Fallback for Edge
   -------------------------------------------------- */
@@ -348,131 +283,6 @@ label {
   margin-bottom: 0.5rem;
 }
 
-button {
-  border-radius: 0;
-}
-
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
-input,
-button,
-select,
-optgroup,
-textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-[role=button] {
-  cursor: pointer;
-}
-
-select {
-  word-wrap: normal;
-}
-
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-}
-
-button:not(:disabled),
-[type=button]:not(:disabled),
-[type=reset]:not(:disabled),
-[type=submit]:not(:disabled) {
-  cursor: pointer;
-}
-
-button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
-  padding: 0;
-  border-style: none;
-}
-
-input[type=radio],
-input[type=checkbox] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-textarea {
-  overflow: auto;
-  resize: vertical;
-}
-
-fieldset {
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-legend {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  line-height: inherit;
-  color: inherit;
-  white-space: normal;
-}
-
-progress {
-  vertical-align: baseline;
-}
-
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-[type=search] {
-  outline-offset: -2px;
-  -webkit-appearance: none;
-}
-
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-::-webkit-file-upload-button {
-  font: inherit;
-  -webkit-appearance: button;
-}
-
-output {
-  display: inline-block;
-}
-
-summary {
-  display: list-item;
-  cursor: pointer;
-}
-
-template {
-  display: none;
-}
 
 [hidden] {
   display: none !important;

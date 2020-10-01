@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>TellMeyours</title>
 </head>
@@ -24,14 +25,13 @@
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#login">login</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#logout">logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- LAndingPage -->
-        <div class="landingPage">
+        <div class="landingPage" id="landingPage">
             <header class="masthead">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center justify-content-center text-center">
@@ -44,229 +44,252 @@
                                 adipisicing elit. Veniam expedita rem, fuga quibusdam aperiam repellat, quo magni aut
                                 dignissimos nostrum optio dolore eaque rerum corporis illo? Magnam adipisci animi eius!
                             </p>
-                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#profile">Find Out More</a>
                         </div>
                     </div>
                 </div>
             </header>
         </div>
 
-        <nav class="navbar navbar-light bg-white">
-            <a href="#" class="navbar-brand">Bootsbook</a>
-            <form class="form-inline">
-                <div class="input-group">
-                </div>
-            </form>
-        </nav>
+        <!-- Profile -->
+        <div id="profile">
 
-        <div class="timeLine">
-
-            <div class="container-fluid gedf-wrapper">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="h5">@LeeCross</div>
-                                <div class="h7 text-muted">Fullname : Miracles Lee Cross</div>
-                                <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby,
-                                    Java,
-                                    Node.js,
-                                    etc.
-                                </div>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="h6 text-muted">Followers</div>
-                                    <div class="h5">5.2342</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="h6 text-muted">Following</div>
-                                    <div class="h5">6758</div>
-                                </li>
-                                <li class="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
+            <nav class="navbar navbar-light bg-white">
+                <a href="#" class="navbar-brand">Bootsbook</a>
+                <form class="form-inline">
+                    <div class="input-group">
                     </div>
-                    <div class="col-md-6 gedf-main">
+                </form>
+            </nav>
 
-                        <!-- Card -->
-                        <div class="container">
-                            <div class="card gedf-card" style="margin-bottom: 20px;">
-                                <div class="card-header">
-                                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts"
-                                                role="tab" aria-controls="posts" aria-selected="true">Make
-                                                a publication</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="images-tab" data-toggle="tab" role="tab"
-                                                aria-controls="images" aria-selected="false" href="#images">Images</a>
-                                        </li>
-                                    </ul>
-                                </div>
+            <div class="timeLine">
+
+                <div class="container-fluid gedf-wrapper">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
                                 <div class="card-body">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="posts" role="tabpanel"
-                                            aria-labelledby="posts-tab">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="message">post</label>
-                                                <textarea class="form-control" id="message" rows="3"
-                                                    placeholder="Write something ..?"></textarea>
-                                            </div>
+                                    <div class="h5">@LeeCross</div>
+                                    <div class="h7 text-muted">Fullname : Miracles Lee Cross</div>
+                                    <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby,
+                                        Java,
+                                        Node.js,
+                                        etc.
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="h6 text-muted">Followers</div>
+                                        <div class="h5">5.2342</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="h6 text-muted">Following</div>
+                                        <div class="h5">6758</div>
+                                    </li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 gedf-main">
 
-                                        </div>
-                                        <div class="tab-pane fade" id="images" role="tabpanel"
-                                            aria-labelledby="images-tab">
-                                            <div class="form-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Upload
-                                                        image</label>
+                            <!-- Card -->
+                            <div class="container">
+                                <div class="card gedf-card" style="margin-bottom: 20px;">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="posts-tab" data-toggle="tab"
+                                                    href="#posts" role="tab" aria-controls="posts"
+                                                    aria-selected="true">Make
+                                                    a storyn</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="title-tab" data-toggle="tab" role="tab"
+                                                    aria-controls="title" aria-selected="false" href="#title">Title</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="description-tab" data-toggle="tab" role="tab"
+                                                    aria-controls="description" aria-selected="false"
+                                                    href="#description">Description</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="song-tab" data-toggle="tab" role="tab"
+                                                    aria-controls="song" aria-selected="false" href="#song">Song</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="posts" role="tabpanel"
+                                                aria-labelledby="posts-tab">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="message">post</label>
+                                                    <textarea class="form-control" id="message" rows="3"
+                                                        placeholder="Write something ..?"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="py-4"></div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-toolbar justify-content-between">
-                                        <div class="btn-group">
-                                            <button type="submit" class="btn btn-primary">share</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--- \\\\\\\Post-->
-                            <div class="card gedf-card" style=" margin-bottom: 20px;">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50"
-                                                    alt="">
-                                            </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0">@LeeCross</div>
-                                                <div class="h7 text-muted">Miracles Lee Cross</div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                                    <a class="card-link" href="#">
-                                        <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores
-                                            illo
-                                            ipsum quos
-                                            cum.</h5>
-                                    </a>
+                                            <div class="tab-pane fade" id="title" role="tabpanel"
+                                                aria-labelledby="images-tab">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="message">post</label>
+                                                        <textarea class="form-control" id="message" rows="3"
+                                                            placeholder="Write something ..?"></textarea>
+                                                    </div>
+                                                </div>
 
-                                    <p class="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
-                                        reprehenderit
-                                        consectetur
-                                        exercitationem odio,
-                                        quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
-                                        dolorum
-                                        tempora
-                                        sapiente
-                                        eius maxime quaerat.
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                                    <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                                </div>
-                            </div>
-                            <!--- \\\\\\\Post-->
-                            <div class="card gedf-card style=" margin-top: 20px; margin-bottom: 20px;"">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50"
-                                                    alt="">
-                                            </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0">@LeeCross</div>
-                                                <div class="h7 text-muted">Miracles Lee Cross</div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="dropdown">
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                    aria-labelledby="gedf-drop1">
-                                                    <div class="h6 dropdown-header">Configuration</div>
-                                                    <a class="dropdown-item" href="#">Save</a>
-                                                    <a class="dropdown-item" href="#">Hide</a>
-                                                    <a class="dropdown-item" href="#">Report</a>
+                                        <div class="btn-toolbar justify-content-between">
+                                            <div class="btn-group">
+                                                <button type="submit" class="btn btn-primary">share</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--- \\\\\\\Post-->
+                                <div class="card gedf-card" style=" margin-bottom: 20px;">
+                                    <div class="card-header">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-2">
+                                                    <img class="rounded-circle" width="45"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-2">
+                                                    <div class="h5 m-0">@LeeCross</div>
+                                                    <div class="h7 text-muted">Miracles Lee Cross</div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+                                        <a class="card-link" href="#">
+                                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
+                                                dolores
+                                                illo
+                                                ipsum quos
+                                                cum.</h5>
+                                        </a>
+
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+                                            reprehenderit
+                                            consectetur
+                                            exercitationem odio,
+                                            quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
+                                            dolorum
+                                            tempora
+                                            sapiente
+                                            eius maxime quaerat.
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                                    <a class="card-link" href="#">
-                                        <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores
-                                            illo
-                                            ipsum quos
-                                            cum.</h5>
-                                    </a>
+                                <!--- \\\\\\\Post-->
+                                <div class="card gedf-card style=" margin-top: 20px; margin-bottom: 20px;"">
+                                    <div class="card-header">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-2">
+                                                    <img class="rounded-circle" width="45"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-2">
+                                                    <div class="h5 m-0">@LeeCross</div>
+                                                    <div class="h7 text-muted">Miracles Lee Cross</div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="dropdown">
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                        aria-labelledby="gedf-drop1">
+                                                        <div class="h6 dropdown-header">Configuration</div>
+                                                        <a class="dropdown-item" href="#">Save</a>
+                                                        <a class="dropdown-item" href="#">Hide</a>
+                                                        <a class="dropdown-item" href="#">Report</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+                                        <a class="card-link" href="#">
+                                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
+                                                dolores
+                                                illo
+                                                ipsum quos
+                                                cum.</h5>
+                                        </a>
 
-                                    <p class="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
-                                        reprehenderit
-                                        consectetur
-                                        exercitationem odio,
-                                        quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
-                                        dolorum
-                                        tempora
-                                        sapiente
-                                        eius maxime quaerat.
-                                    </p>
-                                    <audio controls>
-                                        <source src="https://cdns-preview-1.dzcdn.net/stream/c-13039fed16a173733f227b0bec631034-12.mp3">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                </div>
-                                <div class="card-footer">
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+                                            reprehenderit
+                                            consectetur
+                                            exercitationem odio,
+                                            quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
+                                            dolorum
+                                            tempora
+                                            sapiente
+                                            eius maxime quaerat.
+                                        </p>
+                                        <audio controls>
+                                            <source
+                                                src="https://cdns-preview-1.dzcdn.net/stream/c-13039fed16a173733f227b0bec631034-12.mp3">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                    <div class="card-footer">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card gedf-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the
-                                    card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                        <div class="col-md-3">
+                            <div class="card gedf-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the
+                                        card's content.</p>
+                                    <a href="#" class="card-link">Card link</a>
+                                    <a href="#" class="card-link">Another link</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card gedf-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the
-                                    card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                            <div class="card gedf-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the
+                                        card's content.</p>
+                                    <a href="#" class="card-link">Card link</a>
+                                    <a href="#" class="card-link">Another link</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
+            <div class="footer">
+
+            </div>
+
+
 
         </div>
-        <div class="login">
+
+
+        <!-- Login form -->
+        <div id="login">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -286,17 +309,66 @@
                                         <label for="inputPassword">Password</label>
                                     </div>
 
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                    </div>
-                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                                        id="btn-login">Sign
                                         in</button>
+                                    <br>
+                                    <div class="container">
+                                        <p>Don't have account? <a href="#" id="a-register">Register here</a></p>
+                                    </div>
+    
                                     <hr class="my-4">
-                                    <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
-                                            class="fab fa-google mr-2"></i> Sign in with Google</button>
-                                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i
-                                            class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <!-- Register form -->
+        <div id="register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card card-signin my-5">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Register</h5>
+                                <form class="form-signin">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputFullname" class="form-control"
+                                            placeholder="Full name" required autofocus>
+                                        <label for="inputFullname">Full Name</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputNicName" class="form-control" placeholder="Nicname"
+                                            required autofocus>
+                                        <label for="inputNicName">Nicname</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputUsernameRegister" class="form-control"
+                                            placeholder="Username" required autofocus>
+                                        <label for="inputUsernameRegister">User Name</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="email" id="inputEmailRegister" class="form-control"
+                                            placeholder="email" required autofocus>
+                                        <label for="inputEmailRegister">Email</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="password" id="inputPasswordRegister" class="form-control"
+                                            placeholder="password" required autofocus>
+                                        <label for="inputPasswordRegister">Password</label>
+                                    </div>
+
+
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase"
+                                        type="submit">Register</button>
+                                    <br>
+                                    <a id="a-cancel">Cancel</a>
+                                    <hr class="my-4">
                                 </form>
                             </div>
                         </div>
