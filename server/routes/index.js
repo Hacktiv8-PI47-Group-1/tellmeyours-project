@@ -13,8 +13,9 @@ router.get("/", (req,res)=>{
 // router.get("/langDetectAPI", ApiController.detectLanguage)
 
 
-router.post("/login")
-router.post("/register")
+// router.post("/login")
+router.get("/api/weatherAPI", ApiController.getWeather)
+
 router.use("/post", postRouter)
 router.use("/user", userRouter)
  
