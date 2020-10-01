@@ -1,12 +1,49 @@
 const {Post} = require("../models")
+// const langDetector = require("../helpers/langDetector")
+const axios = require("axios")
+
+const langDetection = axios.create({
+    baseURL: 'https://ws.detectlanguage.com/0.2',
+    params: {
+        key:`f5b71845d0474070cc048f4bc1162091`
+        // key:`demo`
+    }
+})
+const deezer = axios.create({
+    baseURL: 'https://api.deezer.com'
+})
 
 class PostController{
     static getAllPost(req,res,next){
+        let allPost
+        let query = ""
         Post.findAll()
             .then(result=>{
-                res.status(200).json(result)
+                allPost = result
+                result.forEach(element => { 
+                    const kalimat = element.description.split(" ").join("+")
+                    query += " "+kalimat
+                });
+                query = query.split(" ").join("&q[]=").slice(1)
+                console.log(query);
+                // res.status(200).json(result)
+               return langDetection.get(`/detect?${query}`)    
             })
+            .then((data)=>{
+                // console.log(query); 
+                // console.log(allPost);
+                console.log(">>>>>>>>>>>");
+                let detection = data.data.data.detections
+                console.log(detection)
+                for(let i=0;i<allPost.length;i++){ 
+                    allPost[i].dataValues.lang = detection[i][0].language
+                }
+                console.log(allPost);
+                res.status(200).json(allPost)
+                // return deezer.get(`q=eminem`)
+            })  
             .catch(err=>{
+                console.log(err);
                 res.status(500)
             })
     }
@@ -21,18 +58,29 @@ class PostController{
             })
     }
     static postAdd(req,res,next){ 
-        // let userId = req.userData.id || 1
-        let userId = 1
+        // console.log(req.userData);
+        let UserId = req.userData.id
+        let trackUrl
         let {title, description, story, songs} = req.body
-        let data = {title, description, story, songs, UserId:userId}
-        console.log(data);
-        Post.create(data)
-            .then(result=>{
-                res.status(201).json(result) 
-            })
-            .catch(err=>{
-                res.status(500)
-            })
+        // https://api.deezer.com/search?q=eminem
+            deezer.get(`/search?q=${songs}`) 
+                .then(result=>{
+                    trackUrl =result.data.data[0].preview
+                    let data = {title, description, story, songs, UserId, trackUrl}
+                    return Post.create(data)
+                })
+                .then(result=>{
+                    res.status(201).json(result) 
+                })
+                .catch(err=>{
+                    console.log(err);
+                    res.status(500)
+                })
+        // console.log(data);
+        //     
+        //     .catch(err=>{
+        //         res.status(500)
+        //     })
     }
     static putPost(req,res,next){ 
         // let userId = req.userData.id || 1
