@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       story: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       songs: {
         type: Sequelize.STRING
