@@ -44,7 +44,7 @@
                                 adipisicing elit. Veniam expedita rem, fuga quibusdam aperiam repellat, quo magni aut
                                 dignissimos nostrum optio dolore eaque rerum corporis illo? Magnam adipisci animi eius!
                             </p>
-                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#profile">Find Out More</a>
+                            <a class="btn btn-primary btn-xl js-scroll-trigger" id="fetchData()" href="#profile">Find Out More</a>
                         </div>
                     </div>
                 </div>
@@ -90,10 +90,10 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-6 gedf-main">
-
+                        
+                        <div class="col-md-6 gedf-main"> 
                             <!-- Card -->
-                            <div class="container">
+                            <div class="container" id="">
                                 <div class="card gedf-card" style="margin-bottom: 20px;">
                                     <div class="card-header">
                                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -152,104 +152,109 @@
                                     </div>
                                 </div>
                                 <!--- \\\\\\\Post-->
-                                <div class="card gedf-card" style=" margin-bottom: 20px;">
-                                    <div class="card-header">
-                                        <div class="d-flex justify-content-between align-items-center">
+                                <div id="postContainer">
+ 
+                                    <div class="card gedf-card" style=" margin-bottom: 20px;">
+                                        <div class="card-header">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="mr-2">
-                                                    <img class="rounded-circle" width="45"
-                                                        src="https://picsum.photos/50/50" alt="">
-                                                </div>
-                                                <div class="ml-2">
-                                                    <div class="h5 m-0">@LeeCross</div>
-                                                    <div class="h7 text-muted">Miracles Lee Cross</div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="mr-2">
+                                                        <img class="rounded-circle" width="45"
+                                                            src="https://picsum.photos/50/50" alt="">
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <div class="h5 m-0">@LeeCross</div>
+                                                        <div class="h7 text-muted">Miracles Lee Cross</div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
+                                        <div class="card-body">
+                                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+                                            <a class="card-link" href="#">
+                                                <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
+                                                    dolores
+                                                    illo
+                                                    ipsum quos
+                                                    cum.</h5>
+                                            </a>
 
+                                            <p class="card-text">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+                                                reprehenderit
+                                                consectetur
+                                                exercitationem odio,
+                                                quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
+                                                dolorum
+                                                tempora
+                                                sapiente
+                                                eius maxime quaerat.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                                        <a class="card-link" href="#">
-                                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
-                                                dolores
-                                                illo
-                                                ipsum quos
-                                                cum.</h5>
-                                        </a>
-
-                                        <p class="card-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
-                                            reprehenderit
-                                            consectetur
-                                            exercitationem odio,
-                                            quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
-                                            dolorum
-                                            tempora
-                                            sapiente
-                                            eius maxime quaerat.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!--- \\\\\\\Post-->
-                                <div class="card gedf-card style=" margin-top: 20px; margin-bottom: 20px;"">
-                                    <div class="card-header">
-                                        <div class="d-flex justify-content-between align-items-center">
+                                    <!--- \\\\\\\Post-->
+                                    <div class="card gedf-card style=" margin-top: 20px; margin-bottom: 20px;"">
+                                        <div class="card-header">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="mr-2">
-                                                    <img class="rounded-circle" width="45"
-                                                        src="https://picsum.photos/50/50" alt="">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="mr-2">
+                                                        <img class="rounded-circle" width="45"
+                                                            src="https://picsum.photos/50/50" alt="">
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <div class="h5 m-0">@LeeCross</div>
+                                                        <div class="h7 text-muted">Miracles Lee Cross</div>
+                                                    </div>
                                                 </div>
-                                                <div class="ml-2">
-                                                    <div class="h5 m-0">@LeeCross</div>
-                                                    <div class="h7 text-muted">Miracles Lee Cross</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="dropdown">
-                                                    <div class="dropdown-menu dropdown-menu-right"
-                                                        aria-labelledby="gedf-drop1">
-                                                        <div class="h6 dropdown-header">Configuration</div>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Hide</a>
-                                                        <a class="dropdown-item" href="#">Report</a>
+                                                <div>
+                                                    <div class="dropdown">
+                                                        <div class="dropdown-menu dropdown-menu-right"
+                                                            aria-labelledby="gedf-drop1">
+                                                            <div class="h6 dropdown-header">Configuration</div>
+                                                            <a class="dropdown-item" href="#">Save</a>
+                                                            <a class="dropdown-item" href="#">Hide</a>
+                                                            <a class="dropdown-item" href="#">Report</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                                        <a class="card-link" href="#">
-                                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
-                                                dolores
-                                                illo
-                                                ipsum quos
-                                                cum.</h5>
-                                        </a>
+                                        <div class="card-body">
+                                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+                                            <a class="card-link" href="#">
+                                                <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
+                                                    dolores
+                                                    illo
+                                                    ipsum quos
+                                                    cum.</h5>
+                                            </a>
 
-                                        <p class="card-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
-                                            reprehenderit
-                                            consectetur
-                                            exercitationem odio,
-                                            quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
-                                            dolorum
-                                            tempora
-                                            sapiente
-                                            eius maxime quaerat.
-                                        </p>
-                                        <audio controls>
-                                            <source
-                                                src="https://cdns-preview-1.dzcdn.net/stream/c-13039fed16a173733f227b0bec631034-12.mp3">
-                                            Your browser does not support the audio element.
-                                        </audio>
+                                            <p class="card-text">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+                                                reprehenderit
+                                                consectetur
+                                                exercitationem odio,
+                                                quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
+                                                dolorum
+                                                tempora
+                                                sapiente
+                                                eius maxime quaerat.
+                                            </p>
+                                            <audio controls>
+                                                <source
+                                                    src="https://cdns-preview-1.dzcdn.net/stream/c-13039fed16a173733f227b0bec631034-12.mp3">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </div>
+                                        <div class="card-footer">
+                                        </div>
                                     </div>
-                                    <div class="card-footer">
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-3">
                             <div class="card gedf-card">
                                 <div class="card-body">
@@ -298,9 +303,9 @@
                                 <h5 class="card-title text-center">Sign In</h5>
                                 <form class="form-signin">
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control"
-                                            placeholder="Email address" required autofocus>
-                                        <label for="inputEmail">Email address</label>
+                                        <input type="email" id="inputUsername" class="form-control"
+                                            placeholder="Username" required autofocus>
+                                        <label for="inputUsername">Username</label>
                                     </div>
 
                                     <div class="form-label-group">
@@ -310,8 +315,7 @@
                                     </div>
 
                                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
-                                        id="btn-login">Sign
-                                        in</button>
+                                        id="btn-login">Sign in</button>
                                     <br>
                                     <div class="g-signin2 float-right" data-onsuccess="onSignIn"></div>
                                     <div class="container">

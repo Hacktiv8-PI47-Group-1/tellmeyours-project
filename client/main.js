@@ -2,6 +2,7 @@ $(document).ready(function () {
     if (localStorage.access_token) {
         // console.log("berhasil login");
         afterLogin()
+        console.log("loggedin");
     } else {
         login()
         // console.log(" tidak berhasil login");
@@ -16,6 +17,7 @@ function afterLogin() {
     $('#mainNav').show()
     $('#landingPage').show()
     $('#profile').show()
+    fetchData()
 }
 
 function login() {
@@ -36,14 +38,14 @@ function register() {
 
 
 function loginApp() {
-    let email = $('#inputEmail').val()
+    let username = $('#inputUsername').val()
     let password = $('#inputPassword').val()
 
     $.ajax({
         method: 'POST',
-        url: 'http://localhost:3000/login',
+        url: 'http://localhost:3000/user/login',
         data: {
-            email,
+            username,
             password
         }
     })
@@ -57,31 +59,71 @@ function loginApp() {
         })
 }
 
+let cardHtml = ` 
+<div class="card gedf-card" style=" margin-bottom: 20px;">
+<div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="mr-2">
+                <img class="rounded-circle" width="45"
+                    src="https://picsum.photos/50/50" alt="">
+            </div>
+            <div class="ml-2">
+                <div class="h5 m-0">@LeeCross</div>
+                <div class="h7 text-muted">Miracles Lee Cross</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="card-body">
+    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+    <a class="card-link" href="#">
+        <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet,
+            dolores
+            illo
+            ipsum quos
+            cum.</h5>
+    </a>
+
+    <p class="card-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+        reprehenderit
+        consectetur
+        exercitationem odio,
+        quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur
+        dolorum
+        tempora
+        sapiente
+        eius maxime quaerat.
+    </p>
+</div>
+</div>
+
+`
 
 
 
-function fetchData() {
-
+function fetchData() { 
+    console.log("fetching data");
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:3000/',
+        url: 'http://localhost:3000/post',
         headers: {
             access_token: localStorage.getItem('access_token')
         }
     })
         .done(result => {
             console.log(result);
+            $("#postContainer").empty()
             result.forEach(data => {
-                $('#todoTable').append(`
-                `)
+                $('#postContainer').append(cardHtml)
             });
         })
         .fail((error) => {
             console.log('error', error);
         })
-}
-
-
+} 
 
 $('#btn-login').on('click', (event) => {
     event.preventDefault()
