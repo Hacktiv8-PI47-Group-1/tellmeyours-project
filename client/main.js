@@ -1,13 +1,13 @@
-// $(document).ready(function () {
-//     if (localStorage.access_token) {
-//         // console.log("berhasil login");
-//         afterLogin()
-//     } else {
-//         login()
-//         // console.log(" tidak berhasil login");
+$(document).ready(function () {
+    if (localStorage.access_token) {
+        // console.log("berhasil login");
+        afterLogin()
+    } else {
+        login()
+        // console.log(" tidak berhasil login");
 
-//     }
-// });
+    }
+});
 
 
 function afterLogin() {
@@ -98,10 +98,79 @@ $('#a-cancel').on('click', (event) => {
     login()
 
 })
-$('#logout').click(() => {
+$('#logout-btn').click(() => {
     // localStorage.removeItem('access_token')
+    signOut()
     $('#emailLogin').val('')
     $('#passwordLogin').val('')
     localStorage.clear()
     login()
 })
+
+
+const URL = `http://127.0.0.1:3000/`
+
+function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token); 
+    $.ajax({
+        url: `${URL}api/googleLogin`,
+        method: "POST",
+        data: {
+            id_token,
+        }
+    })
+        .done(result => { 
+            console.log('berhasil login', result)
+            localStorage.setItem('access_token', result.access_token) //set token di client
+            afterLogin()
+            function onSignIn(googleUser) {
+                var id_token = googleUser.getAuthResponse().id_token;
+                console.log(id_token); 
+                $.ajax({
+                    url: `${URL}google-login`,
+                    method: "POST",
+                    data: {
+                        id_token,
+                    }
+                })
+                    .done(result => { 
+                        console.log('berhasil login', result)
+                        localStorage.setItem('access_token', result.access_token) //set token di client
+                        afterLogin()
+                    })
+                    .fail(err => {
+                        console.log(err)
+                        // console.log(err.responseJSON.message);
+                    })
+                    .always(_ => {
+                        $('#email').val('')
+                        $('#password').val('')
+                    })
+            }
+            
+            
+              function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                  console.log('User signed out.');
+                });
+              }
+        })
+        .fail(err => {
+            console.log(err)
+            // console.log(err.responseJSON.message);
+        })
+        .always(_ => {
+            $('#email').val('')
+            $('#password').val('')
+        })
+}
+
+ 
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
