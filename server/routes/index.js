@@ -15,6 +15,7 @@ router.get("/", (req,res)=>{
 
 // router.post("/login")
 router.get("/api/weatherAPI", ApiController.getWeather)
+router.post("/api/googleLogin", ApiController.postGoogleLogin)
 
 router.use("/post", postRouter)
 router.use("/user", userRouter)
