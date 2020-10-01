@@ -36,11 +36,11 @@ class PostController{
     }
     static putPost(req,res,next){ 
         // let userId = req.userData.id || 1
-        let userId = 1
+        //let userId = 1
         let {title, description, story, songs} = req.body
         let data = {title, description, story, songs}
-        console.log(data);
-        Post.update(data,{where:{id:req.body.id}})
+        console.log(data, req.params.id);
+        Post.update(data,{where:{id:req.params.id},returning:true})
             .then(result=>{
                 res.status(201).json(result) 
             })
