@@ -1,4 +1,4 @@
-const {Post} = require("../models")
+const {Post,User} = require("../models")
 // const langDetector = require("../helpers/langDetector")
 const axios = require("axios")
 
@@ -15,33 +15,30 @@ const deezer = axios.create({
 
 class PostController{
     static getAllPost(req,res,next){
+        console.log("fetching data<< server");
         let allPost
         let query = ""
-        Post.findAll()
+        Post.findAll({include:[User]})
             .then(result=>{
+                // console.log(result);
                 allPost = result
                 result.forEach(element => { 
                     const kalimat = element.description.split(" ").join("+")
                     query += " "+kalimat
                 });
                 query = query.split(" ").join("&q[]=").slice(1)
-                console.log(query);
-                // res.status(200).json(result)
-               return langDetection.get(`/detect?${query}`)    
+                // console.log(query);
+                res.status(200).json(result)
+            //    return langDetection.get(`/detect?${query}`)    
             })
-            .then((data)=>{
-                // console.log(query); 
-                // console.log(allPost);
-                console.log(">>>>>>>>>>>");
-                let detection = data.data.data.detections
-                console.log(detection)
-                for(let i=0;i<allPost.length;i++){ 
-                    allPost[i].dataValues.lang = detection[i][0].language
-                }
-                console.log(allPost);
-                res.status(200).json(allPost)
-                // return deezer.get(`q=eminem`)
-            })  
+            // .then((data)=>{ 
+            //     console.log(">>>>>>>>>>>");
+            //     let detection = data.data.data.detections 
+            //     for(let i=0;i<allPost.length;i++){ 
+            //         allPost[i].dataValues.lang = detection[i][0].language
+            //     } 
+            //     res.status(200).json(allPost) 
+            // })  
             .catch(err=>{
                 console.log(err);
                 res.status(500)
@@ -58,7 +55,7 @@ class PostController{
             })
     }
     static postAdd(req,res,next){ 
-        // console.log(req.userData);
+        console.log(req.userData);
         let UserId = req.userData.id
         let trackUrl
         let {title, description, story, songs} = req.body
@@ -98,8 +95,8 @@ class PostController{
             })
     }static deletePost(req,res,next){ 
         // let userId = req.userData.id || 1
-        let userId = 1 
-        Post.destroy({where:{id:req.body.id}})
+        console.log(req.params.id); 
+        Post.destroy({where:{id:req.params.id}})
             .then(result=>{
                 res.status(201).json(result) 
             })

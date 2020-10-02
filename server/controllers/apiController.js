@@ -35,15 +35,16 @@ class ApiController{
         // console.log(randomedPass);
         client.verifyIdToken({idToken:token})
             .then(payload=>{
-                // console.log(payload.payload);
+                console.log(payload.payload);
                 return User.findOrCreate({ 
                     defaults: {
-                    fullname: payload.payload.name, 
-                    email: payload.payload.email,
-                    password: randomedPass+""
+                        fullname: payload.payload.fullname, 
+                        username: payload.payload.given_name, 
+                        email: payload.payload.email,
+                        password: randomedPass+""
                     },
                     where: {
-                    email:payload.payload.email
+                        email:payload.payload.email
                     }
                 })
             })

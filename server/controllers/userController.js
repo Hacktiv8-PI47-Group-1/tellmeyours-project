@@ -13,15 +13,20 @@ class UserController {
         }
         console.log(addUser)
         User.create(addUser)
-        .then(result=> {
-            res.status(201).json(result)
-        })
-        .catch(err=> {
-            res.status(500).json(err)
+            .then(result=> {
+                const access_token = signToken({username:addUser.username,id:result.id})
+                //console.log(input.username)
+                // res.status(201).json(result)
+                res.status(200).json() 
+            })
+            .catch(err=> {
+                console.log(err);
+                res.status(500).json(err)
         })
     }
 
     static async login(req, res) {
+        console.log("Login");
         let input = {
             username: req.body.username,
             password: req.body.password
@@ -43,15 +48,29 @@ class UserController {
                     message: "Wrong username/password"
                 })
             } else {
-                const access_token = signToken(input.username)
+                // console.log(user);
+                const access_token = signToken({username:input.username,id:user.id})
                 //console.log(input.username)
                 res.status(200).json({
                     access_token
                 })
             }
         } catch(err) {
+            console.log(err);
             res.status(500).json(err)
         }
+    }
+
+    static getUser(req,res){ 
+        console.log(req.userData," GETUSER<<<<<<<<")
+        User.findByPk(req.userData.id)
+        .then(result=> { 
+            res.status(200).json(result) 
+        })
+        .catch(err=> {
+            console.log(err);
+            res.status(500).json(err)
+        })
     }
 }
 
