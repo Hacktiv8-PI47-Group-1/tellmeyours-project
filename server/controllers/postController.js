@@ -1,4 +1,4 @@
-const {Post} = require("../models")
+const {Post,User} = require("../models")
 // const langDetector = require("../helpers/langDetector")
 const axios = require("axios")
 
@@ -18,7 +18,7 @@ class PostController{
         console.log("fetching data<< server");
         let allPost
         let query = ""
-        Post.findAll()
+        Post.findAll({include:[User]})
             .then(result=>{
                 console.log(result);
                 allPost = result
@@ -60,7 +60,7 @@ class PostController{
             })
     }
     static postAdd(req,res,next){ 
-        // console.log(req.userData);
+        console.log(req.userData);
         let UserId = req.userData.id
         let trackUrl
         let {title, description, story, songs} = req.body
