@@ -1,4 +1,4 @@
-const {User} = require('../models/index.js')
+const {User,Post} = require('../models/index.js')
 const {verifyToken} = require('../helpers/jwt.js')
 
 const authentication = (req, res, next) => {

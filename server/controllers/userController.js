@@ -13,18 +13,15 @@ class UserController {
         }
         console.log(addUser)
         User.create(addUser)
-        .then(result=> {
-            const access_token = signToken({username:addUser.username,id:result.id})
-            //console.log(input.username)
-            // res.status(201).json(result)
-            res.status(200).json({
-                access_token
+            .then(result=> {
+                const access_token = signToken({username:addUser.username,id:result.id})
+                //console.log(input.username)
+                // res.status(201).json(result)
+                res.status(200).json() 
             })
-
-        })
-        .catch(err=> {
-            console.log(err);
-            res.status(500).json(err)
+            .catch(err=> {
+                console.log(err);
+                res.status(500).json(err)
         })
     }
 
@@ -62,6 +59,18 @@ class UserController {
             console.log(err);
             res.status(500).json(err)
         }
+    }
+
+    static getUser(req,res){ 
+        console.log(req.userData," GETUSER<<<<<<<<")
+        User.findByPk(req.userData.id)
+        .then(result=> { 
+            res.status(200).json(result) 
+        })
+        .catch(err=> {
+            console.log(err);
+            res.status(500).json(err)
+        })
     }
 }
 
