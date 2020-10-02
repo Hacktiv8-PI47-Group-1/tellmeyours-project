@@ -15,9 +15,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    story: DataTypes.STRING,
+    title: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notEmpty: { 
+          msg: "Story at least 10 characters"
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notEmpty: { 
+          msg: "Story at least 10 characters"
+        }
+      }
+    },
+    story: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [10],
+          msg: "Story at least 10 characters"
+        }
+      }
+    },
     songs: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
     trackUrl:DataTypes.STRING

@@ -187,7 +187,7 @@ $('#share-btn').click(()=>{
     let description = $('#description-add-input').val()
     let songs = $('#song-add-input').val()
 
-    console.log(story,title,description,song);
+    // console.log(story,title,description,song);
     
     $.ajax({
         url: `${URL}post/add`,
@@ -203,19 +203,27 @@ $('#share-btn').click(()=>{
         }
     })
         .done(result => {  
-            console.log(result);
+            $('#story-add-input').val('')
+            $('#title-add-input').val('')
+            $('#description-add-input').val('')
+            $('#song-add-input').val('')
+            fetchData() 
         })
         .fail(err => {
             console.log(err)
             // console.log(err.responseJSON.message);
+             $('#story-add-input').val('')
+             $('#title-add-input').val('')
+             $('#description-add-input').val('')
+             $('#song-add-input').val('')
+            //  fetchData() 
         })
         .always(_ => { 
              $('#story-add-input').val('')
              $('#title-add-input').val('')
              $('#description-add-input').val('')
              $('#song-add-input').val('')
-             fetchData()
-
+            //  fetchData() 
         })
 
     
@@ -236,8 +244,9 @@ function fetchData() {
         .done(result => {  
             $("#postContainer").empty()
             result.forEach(data => {  
+
                 let username = $('#profile-username-label').val().slice(1)
-                console.log(username); 
+                console.log(username,"<<USERNAME"); 
                 
                 let buttonHtml = ` 
                 <button class="btn btn-danger" onclick="deletePost(${data.id})">Delete

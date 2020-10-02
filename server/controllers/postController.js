@@ -5,7 +5,10 @@ const axios = require("axios")
 const langDetection = axios.create({
     baseURL: 'https://ws.detectlanguage.com/0.2',
     params: {
-        key:`f5b71845d0474070cc048f4bc1162091`
+        // key:`f5b71845d0474070cc048f4bc1162091`//fauzan
+        // key:`d03549e03e801719dffc63589fa486f0` //Reyand
+        key:`20d4663343caf99c23e6ac1637c51e3d` //enrico
+        
         // key:`demo`
     }
 })
@@ -18,7 +21,12 @@ class PostController{
         console.log("fetching data<< server");
         let allPost
         let query = ""
-        Post.findAll({include:[User]})
+        Post.findAll({
+            include:[User],
+            order: [
+            ['updatedAt', 'DESC'], 
+            ],
+        })
             .then(result=>{
                 // console.log(result);
                 allPost = result
@@ -28,17 +36,17 @@ class PostController{
                 });
                 query = query.split(" ").join("&q[]=").slice(1)
                 // console.log(query);
-                res.status(200).json(result)
-            //    return langDetection.get(`/detect?${query}`)    
+                // res.status(200).json(result)
+               return langDetection.get(`/detect?${query}`)    
             })
-            // .then((data)=>{ 
-            //     console.log(">>>>>>>>>>>");
-            //     let detection = data.data.data.detections 
-            //     for(let i=0;i<allPost.length;i++){ 
-            //         allPost[i].dataValues.lang = detection[i][0].language
-            //     } 
-            //     res.status(200).json(allPost) 
-            // })  
+            .then((data)=>{ 
+                // console.log(">>>>>>>>>>>");
+                let detection = data.data.data.detections 
+                for(let i=0;i<allPost.length;i++){ 
+                    allPost[i].dataValues.lang = detection[i][0].language
+                } 
+                res.status(200).json(allPost) 
+            })  
             .catch(err=>{
                 console.log(err);
                 res.status(500)
@@ -69,9 +77,8 @@ class PostController{
                 .then(result=>{
                     res.status(201).json(result) 
                 })
-                .catch(err=>{
-                    console.log(err);
-                    res.status(500)
+                .catch(err=>{ 
+                    res.status(500).json(err)
                 })
         // console.log(data);
         //     
@@ -84,7 +91,7 @@ class PostController{
         //let userId = 1
         let {title, description, story, songs} = req.body
         let data = {title, description, story, songs}
-        console.log(data, req.params.id);
+        // console.log(data, req.params.id);
         Post.update(data,{where:{id:req.params.id},returning:true})
             .then(result=>{
                 res.status(201).json(result) 
@@ -95,7 +102,7 @@ class PostController{
             })
     }static deletePost(req,res,next){ 
         // let userId = req.userData.id || 1
-        console.log(req.params.id); 
+        // console.log(req.params.id); 
         Post.destroy({where:{id:req.params.id}})
             .then(result=>{
                 res.status(201).json(result) 

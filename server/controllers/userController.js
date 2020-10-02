@@ -11,7 +11,7 @@ class UserController {
             email: req.body.email,
             password: req.body.password
         }
-        console.log(addUser)
+        // console.log(addUser)
         User.create(addUser)
             .then(result=> {
                 const access_token = signToken({username:addUser.username,id:result.id})
@@ -62,7 +62,7 @@ class UserController {
     }
 
     static getUser(req,res){ 
-        console.log(req.userData," GETUSER<<<<<<<<")
+        // console.log(req.userData," GETUSER<<<<<<<<")
         User.findByPk(req.userData.id)
         .then(result=> { 
             res.status(200).json(result) 
