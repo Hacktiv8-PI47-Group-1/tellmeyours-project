@@ -15,10 +15,12 @@ const deezer = axios.create({
 
 class PostController{
     static getAllPost(req,res,next){
+        console.log("fetching data<< server");
         let allPost
         let query = ""
         Post.findAll()
             .then(result=>{
+                console.log(result);
                 allPost = result
                 result.forEach(element => { 
                     const kalimat = element.description.split(" ").join("+")
@@ -34,11 +36,11 @@ class PostController{
                 // console.log(allPost);
                 console.log(">>>>>>>>>>>");
                 let detection = data.data.data.detections
-                console.log(detection)
+                // console.log(detection)
                 for(let i=0;i<allPost.length;i++){ 
                     allPost[i].dataValues.lang = detection[i][0].language
                 }
-                console.log(allPost);
+                // console.log(allPost);
                 res.status(200).json(allPost)
                 // return deezer.get(`q=eminem`)
             })  

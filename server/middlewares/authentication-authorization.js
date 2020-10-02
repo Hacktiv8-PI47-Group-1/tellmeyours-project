@@ -3,12 +3,8 @@ const {verifyToken} = require('../helpers/jwt.js')
 
 const authentication = (req, res, next) => {
     const decoded = verifyToken(req.headers.access_token)
-    console.log(decoded)
-    User.findOne({
-        where:{
-            username: decoded
-        }
-    })
+    console.log(decoded,"<< decoded")
+    User.findByPk(decoded.id)
     .then(data => {
         if(!data) {
             res.status(404).json({msg : 'Username Not found'})

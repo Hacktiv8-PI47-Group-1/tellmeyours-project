@@ -14,9 +14,16 @@ class UserController {
         console.log(addUser)
         User.create(addUser)
         .then(result=> {
-            res.status(201).json(result)
+            const access_token = signToken({username:addUser.username,id:result.id})
+            //console.log(input.username)
+            // res.status(201).json(result)
+            res.status(200).json({
+                access_token
+            })
+
         })
         .catch(err=> {
+            console.log(err);
             res.status(500).json(err)
         })
     }
@@ -44,7 +51,8 @@ class UserController {
                     message: "Wrong username/password"
                 })
             } else {
-                const access_token = signToken(input.username)
+                // console.log(user);
+                const access_token = signToken({username:input.username,id:user.id})
                 //console.log(input.username)
                 res.status(200).json({
                     access_token
