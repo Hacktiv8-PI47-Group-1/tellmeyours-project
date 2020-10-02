@@ -109,6 +109,10 @@ function loginApp() {
         .fail((error) => {
             console.log('error', error);
         })
+        .always(()=>{ 
+            $('#inputUsername').val()
+            $('#inputPassword').val()
+        })
 }
 
 
@@ -164,13 +168,19 @@ $('#share-btn').click(()=>{
         }
     })
         .done(result => {  
-            // console.log(result);
+            console.log(result);
         })
         .fail(err => {
-            // console.log(err)
+            console.log(err)
             // console.log(err.responseJSON.message);
         })
         .always(_ => { 
+             $('#story-add-input').val('')
+             $('#title-add-input').val('')
+             $('#description-add-input').val('')
+             $('#song-add-input').val('')
+             fetchData()
+
         })
 
     
