@@ -38,8 +38,38 @@ function afterLogin() {
     $('#landingPage').show()
     $('#profile').show()
     fetchData()
+    getUser()
     getWeather()
 }
+
+function getUser(){ 
+    console.log("fetch user");
+    // $('#profile-username-label').show()
+    // $('#profile-userfullname-label').show() 
+
+    $.ajax({
+        method: 'GET',
+        url: 'http://localhost:3000/post/user',
+        headers: {
+            access_token: localStorage.getItem('access_token')
+        }
+    })
+        .done(response => {
+            console.log(response);
+            $('#profile-username-label').val('')
+            $('#profile-fullname-label').val('') 
+            $('#profile-username-label').append('@'+response.username)
+            $('#profile-fullname-label').append(response.fullName) 
+            // localStorage.setItem('access_token', response.access_token)
+            // afterLogin()
+
+        })
+        .fail((error) => {
+            console.log('error', error);
+        })
+
+}
+
 
 function login() {
     $('#login').show()
@@ -79,13 +109,18 @@ function registerApp() {
         }
     })
         .done(response => {
-            console.log(response);
-            localStorage.setItem('access_token', response.access_token)
-            afterLogin()
-
+            console.log(response); 
+            login() 
         })
         .fail((error) => {
             console.log('error', error);
+        })
+        .always(()=>{ 
+            $('#inputFullname').val('')
+            $('#inputNickName').val('')
+            $('#inputUsernameRegister').val('')
+            $('#inputEmailRegister').val('')
+            $('#inputPasswordRegister').val('')
         })
 }
 
@@ -108,6 +143,10 @@ function loginApp() {
         })
         .fail((error) => {
             console.log('error', error);
+        })
+        .always(()=>{ 
+            $('#inputUsername').val()
+            $('#inputPassword').val()
         })
 }
 
@@ -164,13 +203,19 @@ $('#share-btn').click(()=>{
         }
     })
         .done(result => {  
-            // console.log(result);
+            console.log(result);
         })
         .fail(err => {
-            // console.log(err)
+            console.log(err)
             // console.log(err.responseJSON.message);
         })
         .always(_ => { 
+             $('#story-add-input').val('')
+             $('#title-add-input').val('')
+             $('#description-add-input').val('')
+             $('#song-add-input').val('')
+             fetchData()
+
         })
 
     
@@ -189,9 +234,14 @@ function fetchData() {
         }
     })
         .done(result => {  
-            console.log(result);
             $("#postContainer").empty()
             result.forEach(data => {  
+                let username = $('#profile-username-label').val().slice(1)
+                console.log(username); 
+                
+                let buttonHtml = ` 
+                <button class="btn btn-danger" onclick="deletePost(${data.id})">Delete
+                </button>`
                 let cardHtml = ` 
                 <div class="card gedf-card" style=" margin-bottom: 20px;">
                 <div class="card-header">
@@ -225,9 +275,15 @@ function fetchData() {
                             src="${data.trackUrl}">
                         Your browser does not support the audio element.
                     </audio>
+                    <hr>
+                    <ul class="list-group list-group-flush"> 
+                        <li class="list-group-item">  
+                        ${buttonHtml} 
+                        </li> 
+                    </ul>
+                    
                 </div>
-                </div>
-
+                </div> 
                 `   
                 $('#postContainer').append(cardHtml)
             });
@@ -236,6 +292,35 @@ function fetchData() {
             console.log('error', error);
         })
 } 
+
+function editPost(id){
+    
+}
+
+function deletePost(postId){
+    console.log(postId);
+
+    $.ajax({
+        url: `${URL}post/delete/${postId}`,
+        method: "DELETE",
+        headers: {
+            access_token: localStorage.getItem('access_token')
+        },
+        params: {
+            id:postId 
+        }
+    })
+        .done(result => { 
+            console.log('berhasil terhapus', result) 
+            fetchData() 
+        })
+        .fail(err => {
+            console.log(err) 
+        })
+        .always(_ => { 
+        })
+
+}
 
 function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
@@ -250,39 +335,7 @@ function onSignIn(googleUser) {
         .done(result => { 
             console.log('berhasil login', result)
             localStorage.setItem('access_token', result.access_token) //set token di client
-            afterLogin()
-            function onSignIn(googleUser) {
-                var id_token = googleUser.getAuthResponse().id_token;
-                console.log(id_token); 
-                $.ajax({
-                    url: `${URL}google-login`,
-                    method: "POST",
-                    data: {
-                        id_token,
-                    }
-                })
-                    .done(result => { 
-                        console.log('berhasil login', result)
-                        localStorage.setItem('access_token', result.access_token) //set token di client
-                        afterLogin()
-                    })
-                    .fail(err => {
-                        console.log(err)
-                        // console.log(err.responseJSON.message);
-                    })
-                    .always(_ => {
-                        $('#email').val('')
-                        $('#password').val('')
-                    })
-            }
-            
-            
-              function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                  console.log('User signed out.');
-                });
-              }
+            afterLogin() 
         })
         .fail(err => {
             console.log(err)
