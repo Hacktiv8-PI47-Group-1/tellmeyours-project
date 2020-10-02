@@ -60,7 +60,7 @@ class PostController{
             })
     }
     static postAdd(req,res,next){ 
-        // console.log(req.userData);
+        console.log(req.userData);
         let UserId = req.userData.id
         let trackUrl
         let {title, description, story, songs} = req.body
